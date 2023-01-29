@@ -17,14 +17,7 @@ export const FeedbackProvider = ({children}) => {
       item: {},
       edit: false
     })
-
-    // edit feedback
-    const editFeedback = (item) => {
-      setFeedbackEdit({
-        item,
-        edit: true
-      })
-    }
+ 
 
     // Add feedback function 
     const addFeedback = (newFeedback) => {
@@ -34,6 +27,19 @@ export const FeedbackProvider = ({children}) => {
           icon: 'success',
         })
       }
+
+         // edit feedback
+    const editFeedback = (item) => {
+      setFeedbackEdit({
+        item,
+        edit: true
+      })
+    }
+
+    //update feedback
+    const updateFeedback = (id, upItem) => {
+      setFeedback(feedback.map((item)=>item.id === id ? {...item, ...upItem} : item))
+    }
 
 
     //   Delete Feedback Function  
@@ -62,7 +68,7 @@ export const FeedbackProvider = ({children}) => {
 
       
 
-    return <FeedbackContext.Provider value={{ feedback, deleteFeedback, addFeedback, editFeedback, feedbackEdit }}>
+    return <FeedbackContext.Provider value={{ feedback, deleteFeedback, addFeedback, editFeedback, feedbackEdit, updateFeedback }}>
     {children}
     </FeedbackContext.Provider>
 }
