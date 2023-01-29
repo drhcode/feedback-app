@@ -33,7 +33,7 @@ return (
             initial={{ opacity: 0 }}
             animate={{ opacity: 4 }}
             >
-            <FeedbackItem item={item.id} item={item} key={item.id} handleDelete={handleDelete}/>
+            <FeedbackItem item={item.id} items={item} key={item.id} handleDelete={handleDelete}/>
             </motion.div>
             ))
         }

@@ -121,8 +121,20 @@ input:focus {
 .feedback-stats {
   color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+
+  h4 {
+    background: #ff6a95;
+    padding: 10px;
+    color:rgba(0, 0, 0, 0.8);
+    border-radius: 0.5rem;
+  }
+  
+  h4:hover {
+    background: #fa0d50;
+    cursor: pointer;
+  }
 }
 
 .num-display {

@@ -1,6 +1,6 @@
 import { v4 as uuidv4} from 'uuid'
 import { useState } from 'react';
-import Header from './components/header';
+import Header from './components/Header';
 import FeedbackData from './data/FeedbackData';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
