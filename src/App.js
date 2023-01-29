@@ -7,6 +7,7 @@ import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import swal from 'sweetalert';
 
+
 const App = () => {
 
   const [feedback, setFeedback] = useState(FeedbackData)
@@ -16,7 +17,7 @@ const App = () => {
     swal({
       title: 'Are you sure you want to delete this review?',
       icon: 'warning',
-      buttons: true,
+      buttons: ['No, cancel', true],
       dangerMode: true,
     })
     .then((deleted)=>{
@@ -26,18 +27,21 @@ const App = () => {
           icon: 'success'
         })
       }else {
-        swal("Operation canceled".toLocaleUpperCase())
+        swal("Operation canceled".toLocaleUpperCase(), {
+          icon: 'success',
+        })
         setFeedback(feedback)
       }
-    }
-    )
+    })
   }
 
 
   const addFeedback = (newFeedback) => {
     newFeedback.id = uuidv4()
     setFeedback([newFeedback, ...feedback])
-    swal('Your feedback has been added')
+    swal('Your feedback has been added', {
+      icon: 'success',
+    })
   }
 
   return (
