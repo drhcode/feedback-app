@@ -1,58 +1,33 @@
-import { v4 as uuidv4} from 'uuid'
-import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import FeedbackData from './data/FeedbackData';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
-import swal from 'sweetalert';
+import AboutPage from './pages/AboutPage';
+import { FeedbackProvider } from './context/FeedbackContext';
 
 
 const App = () => {
 
-  const [feedback, setFeedback] = useState(FeedbackData)
-
-
-  const deleteFeedback = (id) => {
-    swal({
-      title: 'Are you sure you want to delete this review?',
-      icon: 'warning',
-      buttons: ['No, cancel', true],
-      dangerMode: true,
-    })
-    .then((deleted)=>{
-      setFeedback(feedback.filter((item)=> item.id !== id))
-      if(deleted) {
-        swal('You review has been deleted',{
-          icon: 'success'
-        })
-      }else {
-        swal("Operation canceled".toLocaleUpperCase(), {
-          icon: 'success',
-        })
-        setFeedback(feedback)
-      }
-    })
-  }
-
-
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4()
-    setFeedback([newFeedback, ...feedback])
-    swal('Your feedback has been added', {
-      icon: 'success',
-    })
-  }
-
   return (
-    <>
-    <Header  />
-    <div className='container'>
-    <FeedbackStats feedback={feedback} />
-    <FeedbackList feedback={feedback} handleDelete={deleteFeedback}/>
-    <FeedbackForm handleAdd = {addFeedback}/>
+    <FeedbackProvider>
+    <Router>
+     <Header />
+      <div className='container'>
+       <Routes>
+       <Route exact path='/' element={
+        <>
+        <FeedbackStats />
+        <FeedbackForm />
+        <FeedbackList />
+        </>
+       }>
+        </Route>
+      <Route path='/about' element={<AboutPage />}/>
+      </Routes>
     </div>
-    </>
+    </Router>
+    </FeedbackProvider>
   )
 }
 
