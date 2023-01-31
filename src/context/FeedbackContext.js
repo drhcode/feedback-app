@@ -80,12 +80,13 @@ export const FeedbackProvider = ({children}) => {
           buttons: ['No, cancel', true],
           dangerMode: true,
         })
+
         .then((deleted)=>{
-          setFeedback(feedback.filter((item)=> item.id !== id))
           if(deleted) {
             swal('You review has been deleted', {
               icon: 'success'
             })
+            setFeedback(data.filter((item)=> item.id !== id))
           }else {
             swal("Operation canceled".toLocaleUpperCase(), {
               icon: 'success',
@@ -94,9 +95,6 @@ export const FeedbackProvider = ({children}) => {
           }
         })
       }
-
-
-      
 
     return <FeedbackContext.Provider value={{ feedback, deleteFeedback, addFeedback, editFeedback, feedbackEdit, updateFeedback, isLoading }}>
     {children}

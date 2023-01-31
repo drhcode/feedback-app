@@ -1,17 +1,17 @@
 {
   "feedback": [
     {
-      "text": "my second feedback ",
-      "rating": 7,
+      "text": "This is my second feedback",
+      "rating": 9,
       "id": 2
     },
     {
-      "text": "my third feedback",
-      "rating": 10,
+      "text": "This is my third feedback",
+      "rating": 9,
       "id": 3
     },
     {
-      "text": "my first feedback is here",
+      "text": "This is my first feedback ",
       "rating": 9,
       "id": 4
     }
