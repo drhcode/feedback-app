@@ -240,3 +240,17 @@ input:focus {
     width: 80%;
   }
 }
+
+// spiner loading 
+.loading {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 15px;
+}
+.loading-image {
+  width: 200px;
+  margin: auto;
+  display: block;
+}
